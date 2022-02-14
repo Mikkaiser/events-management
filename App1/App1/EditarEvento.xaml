@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.EditarEvento">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Nome" />
+                <Entry x:Name="txbNome" 
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Data" />
+                <DatePicker x:Name="txbData" 
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Valor" />
+                <Entry x:Name="txbValor" 
+                       HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+
+
+            <Frame>
+                <StackLayout>
+                    <Label Text="Categorias" />
+                    <CollectionView x:Name="cvCategorias"
+                                HeightRequest="400">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Span="3"
+                                         VerticalItemSpacing="3"
+                                         HorizontalItemSpacing="3"
+                                         Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding nome}" 
+                                   Padding="3"
+                                   BackgroundColor="#004aad"
+                                   TextColor="White">
+                                    <Label.GestureRecognizers>
+                                        <DragGestureRecognizer DragStarting="DragGestureRecognizer_DragStarting" CanDrag="True"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                    <StackLayout HorizontalOptions="End">
+                        <StackLayout.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="lixeira.png"
+                               WidthRequest="50">
+                        </Image>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+
+            <Button Text="Galeria de fotos" 
+                    BackgroundColor="#fdc100"
+                    />
+
+            <Button Text="Salvar" 
+                    BackgroundColor="#00903e"
+                    TextColor="White"
+                    Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

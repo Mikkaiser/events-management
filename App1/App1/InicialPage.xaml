@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.InicialPage">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Filtro" WidthRequest="50"/>
+                <Entry x:Name="txbFiltro" HorizontalOptions="FillAndExpand"/>
+                <Image Source="lupa.png"
+                       WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="plus_icon.png"
+                       WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <CollectionView x:Name="cvCategorias"
+                            HeightRequest="200">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="3"
+                                     VerticalItemSpacing="3"
+                                     HorizontalItemSpacing="3"
+                                     Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding nome}" 
+                               Padding="3"
+                               BackgroundColor="#004aad"
+                               TextColor="White">
+                            <Label.GestureRecognizers>
+                                <DragGestureRecognizer DragStarting="DragGestureRecognizer_DragStarting" CanDrag="True"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+            <CollectionView x:Name="cvEventos"
+                            SelectionChanged="cvEventos_SelectionChanged"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="3"
+                                     VerticalItemSpacing="3"
+                                     HorizontalItemSpacing="3"
+                                     Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout BackgroundColor="Yellow"
+                                     Padding="3">
+                            <StackLayout.GestureRecognizers>
+                                <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop"/>
+                                <DragGestureRecognizer CanDrag="True" DragStarting="DragGestureRecognizer_DragStarting_1"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{Binding nome}" />
+                            <Label Text="{Binding data}" />
+                            <Label Text="{Binding valor}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+
+            <StackLayout HorizontalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True" Drop="DropGestureRecognizer_Drop_2"/>
+                </StackLayout.GestureRecognizers>
+                <Image Source="lixeira.png"
+                               WidthRequest="50">
+                </Image>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

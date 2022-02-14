@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.CadastroEvento">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     Padding="10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Nome" />
+                <Entry x:Name="txbNome" 
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Data" />
+                <DatePicker x:Name="txbData" 
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Valor" />
+                <Entry x:Name="txbValor" 
+                       HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+
+            <Button Clicked="Button_Clicked" Text="Salvar"
+                    BackgroundColor="#00903e"
+                    TextColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
